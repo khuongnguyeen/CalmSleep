@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calm Sleep</string>
+    <string name="home">Home</string>
+    <string name="sounds">Sounds</string>
+    <string name="strories">Strories</string>
+    <string name="meditation">Meditation</string>
+    <string name="alarm">Alarm</string>
+</resources>
