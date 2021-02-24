@@ -11,9 +11,6 @@ class MyApp : Application(){
         var SETTING = 1
         var POSITION = 0
         var ISPLAYING = false
-        private val musicData = mutableListOf<MusicData>()
-        fun getMusicData() = musicData
-        fun getViewModel() = musicViewModel
     }
 
     override fun onCreate() {

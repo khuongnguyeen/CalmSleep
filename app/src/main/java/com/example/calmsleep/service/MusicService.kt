@@ -21,19 +21,20 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.manager.MusicOnlineManager
+import com.example.calmsleep.model.MusicData
 import org.jsoup.Jsoup
 
 @Suppress("DEPRECATION")
 class MusicService : LifecycleService(){
     private val play = MusicOnlineManager()
-
+    private val musicData = mutableListOf<MusicData>()
+    fun getMusicData() = musicData
 
     override fun onCreate() {
         super.onCreate()
-
         MyApp.getMusic().musicData.observe(this, Observer {
-            MyApp.getMusicData().clear()
-            MyApp.getMusicData().addAll(it)
+            musicData.clear()
+            musicData.addAll(it)
         })
 
     }
@@ -69,7 +70,7 @@ class MusicService : LifecycleService(){
 
             }
             "NEXT" -> {
-                if (MyApp.POSITION == MyApp.getMusicData().size - 1) {
+                if (MyApp.POSITION == musicData.size - 1) {
 
                 } else {
 
@@ -87,10 +88,10 @@ class MusicService : LifecycleService(){
     fun play(position: Int) {
         MyApp.POSITION = position
         createNotification(position)
-        if (MyApp.getMusicData()[position].linkMusic == null) {
-            getLinkMusicAsync(MyApp.getMusicData()[position].linkSong, position)
+        if (musicData[position].linkMusic == null) {
+            getLinkMusicAsync(musicData[position].linkSong, position)
         } else {
-            play.setPath(MyApp.getMusicData()[position].linkMusic!!)
+            play.setPath(musicData[position].linkMusic!!)
         }
     }
 
@@ -123,7 +124,7 @@ class MusicService : LifecycleService(){
     private fun createNotification(position: Int, isPlaying: Boolean = true) {
         createChannel()
         val remoteView = RemoteViews(packageName, R.layout.notification)
-        remoteView.setTextViewText(R.id.tv_name_2, MyApp.getMusicData()[position].songName)
+        remoteView.setTextViewText(R.id.tv_name_2, musicData[position].songName)
         remoteView.setImageViewBitmap(
             R.id.btn_play,
             BitmapFactory.decodeResource(
@@ -134,15 +135,15 @@ class MusicService : LifecycleService(){
         )
         createPendingIntentMusic(remoteView)
         val notification = NotificationCompat.Builder(this, "noti")
-            .setSmallIcon(R.drawable.baseline_play_circle_white_36dp)
+            .setSmallIcon(R.drawable.baseline_play_circle_white_24dp)
             .setContent(remoteView)
             .setCustomBigContentView(remoteView)
             .setDefaults(0)
             .build()
 
-        if (MyApp.getMusicData()[position].linkImage != null) {
+        if (musicData[position].linkImage != null) {
             Glide.with(this).asBitmap().load(
-                MyApp.getMusicData()[position].linkImage
+                musicData[position].linkImage
             ).into(
                 object : CustomTarget<Bitmap>() {
                     override fun onResourceReady(
@@ -178,12 +179,12 @@ class MusicService : LifecycleService(){
         object : AsyncTask<Void, Void, String?>() {
             override fun doInBackground(vararg params: Void?): String? {
                 val link = getLinkMusic(linkHtml = linkHtml)
-                MyApp.getMusicData()[position].linkMusic = link
+                musicData[position].linkMusic = link
                 return link
             }
 
             override fun onPostExecute(result: String?) {
-                MyApp.getMusicData()[position].linkMusic = result
+                musicData[position].linkMusic = result
                 if (result != null) {
                     play.setPath(result)
                 }

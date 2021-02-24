@@ -30,29 +30,30 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.rc.layoutManager = GridLayoutManager(context, 2)
-        binding.rc.adapter = HomeAdapter(this)
 
-        binding.data = MyApp.getViewModel()
 
         openServiceUnBound()
 
-        createConnectService()
+
         register()
+        binding.rc.layoutManager = GridLayoutManager(context, 2)
+        binding.rc.adapter = HomeAdapter(this)
+
+        binding.data = MyApp.getMusic()
 
         return binding.root
     }
-    private fun register(){
-        MyApp.getMusic().musicData.observe(this, Observer{
+
+    private fun register() {
+        MyApp.getMusic().musicData.observe(this, Observer {
             binding.rc.adapter!!.notifyDataSetChanged()
         })
 
 
     }
 
-    private fun createConnectService(){
-        //tao cau
-        conn= object : ServiceConnection{
+    private fun createConnectService() {
+        conn = object : ServiceConnection {
             override fun onServiceDisconnected(name: ComponentName?) {
 
             }
@@ -60,25 +61,24 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
             override fun onServiceConnected(name: ComponentName?, binder: IBinder) {
                 val myBinder = binder as MusicService.MyBinder
                 service = myBinder.service
-                if ( MyApp.getMusicData().size == 0){
+                if (service!!.getMusicData().size == 0) {
                     MyApp.getMusic().searchSong(null)
-                }else {
+                } else {
                     binding.rc.adapter!!.notifyDataSetChanged()
                 }
 
             }
         }
-        //tao intent de xac dinh can ket noi den service nao
         val intent = Intent()
         intent.setClass(context!!, MusicService::class.java)
-        //gui yeu cau
         context!!.bindService(intent, conn!!, Context.BIND_AUTO_CREATE)
     }
 
-    private fun openServiceUnBound(){
-        val intent = Intent()
-        intent.setClass(context!!, MusicService::class.java)
+    private fun openServiceUnBound() {
+        val intent = Intent(context, MusicService::class.java)
         context!!.startService(intent)
+        createConnectService()
+
     }
 
     override fun onDestroyView() {
@@ -87,10 +87,15 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
     }
 
     override fun onItemClick(position: Int) {
-        Log.e("khuongok","---------------------------------$position")
+        Log.e("khuongok", "---------------------------------$position")
     }
 
-    override fun getCount() = MyApp.getMusicData().size
+    override fun getCount(): Int {
+        if ( service == null){
+            return 0
+        }
+        return service!!.getMusicData().size
+    }
 
-    override fun getData(position: Int)= MyApp.getMusicData()[position]
+    override fun getData(position: Int) =  service!!.getMusicData()[position]
 }

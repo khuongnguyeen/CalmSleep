@@ -6,9 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.calmsleep.databinding.ItemMusicBinding
 import com.example.calmsleep.model.MusicData
 
-class HomeAdapter (private val inter:IMusic):RecyclerView.Adapter<HomeAdapter.HomeHolder>(){
+class HomeAdapter(private val inter: IMusic) : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
-        return HomeHolder(ItemMusicBinding.inflate(LayoutInflater.from(parent.context),parent,false),inter)
+        return HomeHolder(
+            ItemMusicBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ), inter
+        )
     }
 
     override fun getItemCount() = inter.getCount()
@@ -18,14 +24,15 @@ class HomeAdapter (private val inter:IMusic):RecyclerView.Adapter<HomeAdapter.Ho
     }
 
     interface IMusic {
-        fun onItemClick(position:Int)
-        fun getCount():Int
-        fun getData(position:Int):MusicData
+        fun onItemClick(position: Int)
+        fun getCount(): Int
+        fun getData(position: Int): MusicData
     }
 
-    class HomeHolder(val binding:ItemMusicBinding,inter:IMusic):RecyclerView.ViewHolder(binding.root){
+    class HomeHolder(val binding: ItemMusicBinding, inter: IMusic) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 inter.onItemClick(adapterPosition)
             }
         }
