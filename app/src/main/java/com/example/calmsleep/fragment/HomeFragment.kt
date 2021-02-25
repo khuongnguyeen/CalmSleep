@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calmsleep.adapter.HomeAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentHomeBinding
@@ -28,16 +29,26 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-
         openServiceUnBound()
 
 
         register()
-        binding.rc.layoutManager = GridLayoutManager(context, 2)
+        binding.rc.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         binding.rc.adapter = HomeAdapter(this)
+
+        binding.rc2.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rc2.adapter = HomeAdapter(this)
+
+        binding.rc3.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rc3.adapter = HomeAdapter(this)
+
+        binding.rc4.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rc4.adapter = HomeAdapter(this)
+
+        binding.rc5.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rc5.adapter = HomeAdapter(this)
 
         binding.data = MyApp.getMusic()
 
@@ -47,6 +58,10 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
     private fun register() {
         MyApp.getMusic().musicData.observe(this, Observer {
             binding.rc.adapter!!.notifyDataSetChanged()
+            binding.rc2.adapter!!.notifyDataSetChanged()
+            binding.rc3.adapter!!.notifyDataSetChanged()
+            binding.rc4.adapter!!.notifyDataSetChanged()
+            binding.rc5.adapter!!.notifyDataSetChanged()
         })
 
 
@@ -65,6 +80,10 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
                     MyApp.getMusic().searchSong(null)
                 } else {
                     binding.rc.adapter!!.notifyDataSetChanged()
+                    binding.rc2.adapter!!.notifyDataSetChanged()
+                    binding.rc3.adapter!!.notifyDataSetChanged()
+                    binding.rc4.adapter!!.notifyDataSetChanged()
+                    binding.rc5.adapter!!.notifyDataSetChanged()
                 }
 
             }
@@ -84,6 +103,7 @@ class HomeFragment : Fragment(), HomeAdapter.IMusic {
     override fun onDestroyView() {
         context!!.unbindService(conn!!)
         super.onDestroyView()
+
     }
 
     override fun onItemClick(position: Int) {

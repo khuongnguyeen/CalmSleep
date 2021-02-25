@@ -1,8 +1,9 @@
-package com.example.calmsleep
+package com.example.calmsleep.acivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.calmsleep.R
 import com.example.calmsleep.databinding.ActivityMainBinding
 import com.example.calmsleep.fragment.*
 
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun addHomeFragment() {
+        binding.rlOk.setBackgroundResource(R.drawable.bg_4)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = HomeFragment()
@@ -49,7 +51,12 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    override fun onBackPressed() {
+
+    }
+
     fun addSoundsFragment() {
+        binding.rlOk.setBackgroundResource(R.drawable.bg_2)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = SoundsFragment()
@@ -59,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addStoriesFragment() {
+
+        binding.rlOk.setBackgroundResource(R.drawable.bg_3)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = StoriesFragment()
@@ -68,6 +77,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addMeditationFragment() {
+
+        binding.rlOk.setBackgroundResource(R.drawable.bg_5)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = MeditationFragment()
@@ -77,6 +88,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addAlarmFragment() {
+
+        binding.rlOk.setBackgroundResource(R.drawable.bg_6)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = AlarmFragment()
