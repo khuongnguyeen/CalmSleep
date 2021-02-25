@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.calmsleep.R
 import com.example.calmsleep.databinding.ActivityMainBinding
-import com.example.calmsleep.fragment.*
+import com.example.calmsleep.ui.fragment.*
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -41,13 +42,17 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun addHomeFragment() {
+
+
+
+    private fun addHomeFragment() {
         binding.rlOk.setBackgroundResource(R.drawable.bg_4)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = HomeFragment()
+
         tran
-            .replace(R.id.content, fr)
+            .replace(R.id.rc, fr)
             .commit()
     }
 
@@ -55,46 +60,46 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun addSoundsFragment() {
+    private fun addSoundsFragment() {
         binding.rlOk.setBackgroundResource(R.drawable.bg_2)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = SoundsFragment()
         tran
-            .replace(R.id.content, fr)
+            .replace(R.id.rc, fr)
             .commit()
     }
 
-    fun addStoriesFragment() {
+    private fun addStoriesFragment() {
 
         binding.rlOk.setBackgroundResource(R.drawable.bg_3)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = StoriesFragment()
         tran
-            .replace(R.id.content, fr)
+            .replace(R.id.rc, fr)
             .commit()
     }
 
-    fun addMeditationFragment() {
+    private fun addMeditationFragment() {
 
         binding.rlOk.setBackgroundResource(R.drawable.bg_5)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = MeditationFragment()
         tran
-            .replace(R.id.content, fr)
+            .replace(R.id.rc, fr)
             .commit()
     }
 
-    fun addAlarmFragment() {
+    private fun addAlarmFragment() {
 
         binding.rlOk.setBackgroundResource(R.drawable.bg_6)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = AlarmFragment()
         tran
-            .replace(R.id.content, fr)
+            .replace(R.id.rc, fr)
             .commit()
     }
 

@@ -22,6 +22,7 @@ import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.manager.MusicOnlineManager
 import com.example.calmsleep.model.MusicData
+import com.example.calmsleep.model.VerticalModel
 import org.jsoup.Jsoup
 
 @Suppress("DEPRECATION")
@@ -35,6 +36,7 @@ class MusicService : LifecycleService(){
         MyApp.getMusic().musicData.observe(this, Observer {
             musicData.clear()
             musicData.addAll(it)
+
         })
 
     }

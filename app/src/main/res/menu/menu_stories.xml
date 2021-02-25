@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_picks"
+        android:icon="@drawable/stars"
+        android:title="@string/experts_picks" />
+    <item
+        android:id="@+id/action_females"
+        android:icon="@drawable/female"
+        android:title="@string/females_narration" />
+    <item
+        android:id="@+id/action_male"
+        android:icon="@drawable/male"
+        android:title="@string/male_narration" />
+    <item
+        android:id="@+id/action_kid"
+        android:icon="@drawable/kid"
+        android:title="@string/kids" />
+</menu>

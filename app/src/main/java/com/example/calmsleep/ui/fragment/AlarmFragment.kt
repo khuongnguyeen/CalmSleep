@@ -1,4 +1,4 @@
-package com.example.calmsleep.fragment
+package com.example.calmsleep.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

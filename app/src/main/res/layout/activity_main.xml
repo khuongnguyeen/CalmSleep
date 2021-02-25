@@ -57,7 +57,7 @@
             app:menu="@menu/menu_bottom"/>
 
         <FrameLayout
-            android:id="@+id/content"
+            android:id="@+id/rc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/bottom_navigation"

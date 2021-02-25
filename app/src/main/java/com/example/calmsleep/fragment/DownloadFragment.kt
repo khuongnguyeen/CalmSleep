@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.calmsleep.databinding.FragmentSoundsBinding
+import com.example.calmsleep.databinding.FragmentDownloadBinding
 
-class SoundsFragment : Fragment(){
-    private lateinit var binding: FragmentSoundsBinding
+class DownloadFragment : Fragment(){
+    private lateinit var binding: FragmentDownloadBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSoundsBinding.inflate(inflater, container,false)
-
-
-
+        binding = FragmentDownloadBinding.inflate(inflater, container,false)
         return binding.root
     }
 }

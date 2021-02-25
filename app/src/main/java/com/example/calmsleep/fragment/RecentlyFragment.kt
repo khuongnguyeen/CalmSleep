@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.calmsleep.databinding.FragmentMeditationBinding
+import com.example.calmsleep.databinding.FragmentRecentlyBinding
 
-class MeditationFragment : Fragment(){
-    private lateinit var binding: FragmentMeditationBinding
+class RecentlyFragment: Fragment(){
+    private lateinit var binding: FragmentRecentlyBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMeditationBinding.inflate(inflater, container,false)
+        binding = FragmentRecentlyBinding.inflate(inflater, container,false)
+
+
+
 
 
 

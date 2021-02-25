@@ -7,4 +7,10 @@
     <string name="alarm">Alarm</string>
     <string name="la_vay">la vay</string>
     <string name="sound">Sound</string>
+    <string name="experts_picks">Experts Picks</string>
+    <string name="females_narration">Females narration</string>
+    <string name="male_narration">Male narration</string>
+    <string name="kids">Kids</string>
+    <string name="nature">Nature</string>
+    <string name="ambient">Ambient</string>
 </resources>
