@@ -39,6 +39,8 @@
                     android:layout_marginTop="10dp"
                     android:text="Recently Player"
                     android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/imageView2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calmsleep.R
 import com.example.calmsleep.acivity.LoadingAcivity
+import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.adapter.VerticalHomeAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentHomeBinding
@@ -63,6 +65,7 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
         val fr = ViewAllFragment(str,data)
         tran
             .replace(R.id.rc, fr)
+            .addToBackStack(null)
             .commit()
     }
 
@@ -75,6 +78,8 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
     }
 
     override fun onClick(position: Int) {
-        addHomeFragment(musicDataVertical[position].text,musicDataVertical[position].list)
+//        addHomeFragment(musicDataVertical[position].text,musicDataVertical[position].list)
+        (activity as com.example.calmsleep.acivity.MainActivity).addViewFragment(musicDataVertical[position].text,musicDataVertical[position].list)
+        Toast.makeText(context,"kkkkkkkkkkko",Toast.LENGTH_SHORT).show()
     }
 }

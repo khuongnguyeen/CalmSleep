@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.calmsleep.R
 import com.example.calmsleep.databinding.ActivityMainBinding
+import com.example.calmsleep.fragment.ViewAllFragment
+import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.fragment.*
 
 
@@ -43,7 +45,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun addViewFragment(str: String,data: MutableList<MusicData>) {
 
+        val manager = supportFragmentManager
+        val tran = manager.beginTransaction()
+        val fr = ViewAllFragment(str,data)
+        tran
+            .replace(R.id.rc, fr)
+            .commit()
+    }
 
     private fun addHomeFragment() {
         binding.rlOk.setBackgroundResource(R.drawable.bg_4)

@@ -19,13 +19,15 @@ class ViewAllFragment(val str: String, val data: MutableList<MusicData>) : Fragm
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewAllBinding.inflate(inflater, container, false)
-        binding.rc.layoutManager = GridLayoutManager(context, 2)
-        binding.tvTitle.text = str
+        binding.rc.layoutManager = GridLayoutManager(context, 3)
         binding.rc.adapter = HomeAdapter(this)
+        binding.tvTitle.text = str
         return binding.root
     }
 
-    override fun getCount() = data.size
+    override fun getCount(): Int {
+        return data.size
+    }
 
     override fun getData(position: Int): MusicData {
        return data[position]
