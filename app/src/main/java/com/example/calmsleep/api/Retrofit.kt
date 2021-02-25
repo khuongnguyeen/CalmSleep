@@ -26,7 +26,7 @@ object Retrofit {
             )
             .build()
         return Retrofit.Builder()
-            .baseUrl("https://server-2007e.herokuapp.com")
+            .baseUrl("https://duy-khuong.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(http)

@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MusicAPI{
-    @GET("/song/searchSong")
+    @GET("/api/searchSong")
     fun songSearch(
         @Query("songName") songName:String?,
         @Query("currentPage") currentPage:Int=1

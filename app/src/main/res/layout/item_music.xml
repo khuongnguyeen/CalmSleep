@@ -33,7 +33,7 @@
                 android:layout_marginStart="6dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="4dp"
-                app:setText="@{data.songName}"
+                app:setText="@{data.id}"
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_width="wrap_content"

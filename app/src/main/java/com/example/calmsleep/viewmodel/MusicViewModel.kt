@@ -20,7 +20,7 @@ class MusicViewModel : ViewModel() {
     val musicData = MutableLiveData<MutableList<MusicData>>()
 
 
-    val isSearchingData = ObservableBoolean(false)
+    val isSearchingData = ObservableBoolean(true)
 
     @SuppressLint("CheckResult")
     fun searchSong(songName: String?, page: Int = 1) {
@@ -32,7 +32,6 @@ class MusicViewModel : ViewModel() {
                 {
                     musicData.value = it
                     isSearchingData.set(false)
-
                     Log.d("duy khuong", "----------------->>>> API <<<<-----------------")
                 },
                 {

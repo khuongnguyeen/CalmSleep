@@ -2,6 +2,7 @@ package com.example.calmsleep.application
 
 import android.app.Application
 import com.example.calmsleep.model.MusicData
+import com.example.calmsleep.model.VerticalModel
 import com.example.calmsleep.viewmodel.MusicViewModel
 
 class MyApp : Application(){
@@ -11,6 +12,7 @@ class MyApp : Application(){
         var SETTING = 1
         var POSITION = 0
         var ISPLAYING = false
+        val musicDataVertical = mutableListOf<VerticalModel>()
     }
 
     override fun onCreate() {

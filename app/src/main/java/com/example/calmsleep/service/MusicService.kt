@@ -12,6 +12,7 @@ import android.os.AsyncTask
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
@@ -19,6 +20,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
+import com.example.calmsleep.acivity.LoadingAcivity
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.manager.MusicOnlineManager
 import com.example.calmsleep.model.MusicData
@@ -27,7 +29,7 @@ import org.jsoup.Jsoup
 
 @Suppress("DEPRECATION")
 class MusicService : LifecycleService(){
-    private val play = MusicOnlineManager()
+    val play = MusicOnlineManager()
     private val musicData = mutableListOf<MusicData>()
     fun getMusicData() = musicData
 
@@ -36,9 +38,28 @@ class MusicService : LifecycleService(){
         MyApp.getMusic().musicData.observe(this, Observer {
             musicData.clear()
             musicData.addAll(it)
+            getData()
 
         })
 
+    }
+
+    private fun getData() {
+        for (j in 0..5) {
+            val k = mutableListOf<MusicData>()
+            k.clear()
+            for (i in musicData) {
+                if (j == i.id) {
+                    k.add(i)
+                }
+            }
+            val verticalModel = VerticalModel("Title $j", k)
+            MyApp.musicDataVertical.add(verticalModel)
+
+        }
+        for (i in MyApp.musicDataVertical){
+            Log.d("okkkkkkkk","${i.text},${i.list}")
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -87,13 +108,13 @@ class MusicService : LifecycleService(){
         }
     }
 
-    fun play(position: Int) {
+    fun play(position: Int,hoPosition:Int){
         MyApp.POSITION = position
         createNotification(position)
-        if (musicData[position].linkMusic == null) {
-            getLinkMusicAsync(musicData[position].linkSong, position)
+        if ( MyApp.musicDataVertical[position].list[hoPosition].linkMusic == null) {
+            getLinkMusicAsync(MyApp.musicDataVertical[position].list[hoPosition].linkSong, position)
         } else {
-            play.setPath(musicData[position].linkMusic!!)
+            play.setData(MyApp.musicDataVertical[position].list[hoPosition].linkMusic!!)
         }
     }
 
@@ -123,7 +144,7 @@ class MusicService : LifecycleService(){
         remoteViews.setOnClickPendingIntent(R.id.btn_cancel, pendingIntentCancel)
     }
 
-    private fun createNotification(position: Int, isPlaying: Boolean = true) {
+    fun createNotification(position: Int, isPlaying: Boolean = true) {
         createChannel()
         val remoteView = RemoteViews(packageName, R.layout.notification)
         remoteView.setTextViewText(R.id.tv_name_2, musicData[position].songName)
@@ -176,7 +197,7 @@ class MusicService : LifecycleService(){
         }
     }
 
-    private fun getLinkMusicAsync(linkHtml: String, position: Int) {
+   fun getLinkMusicAsync(linkHtml: String, position: Int) {
         val async = @SuppressLint("StaticFieldLeak")
         object : AsyncTask<Void, Void, String?>() {
             override fun doInBackground(vararg params: Void?): String? {
@@ -188,7 +209,7 @@ class MusicService : LifecycleService(){
             override fun onPostExecute(result: String?) {
                 musicData[position].linkMusic = result
                 if (result != null) {
-                    play.setPath(result)
+                    play.setData(result)
                 }
 
             }

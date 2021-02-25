@@ -6,7 +6,7 @@ import android.util.Log
 class MusicOnlineManager : MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener {
     private var mp: MediaPlayer?=null
 
-    fun setPath(path:String){
+    fun setData(path:String){
         release()
         mp = MediaPlayer()
         mp?.setOnErrorListener(this)

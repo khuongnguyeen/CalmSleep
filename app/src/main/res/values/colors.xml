@@ -10,4 +10,7 @@
     <color name="blue_bottom">#304FFE</color>
     <color name="indigo_600">#3949AB</color>
     <color name="indigo_100">#C5CAE9</color>
+    <color name="khuong">#021f3c</color>
+    <color name="khuong_200">#41b3ec</color>
+    <color name="khuong_00">#205f81</color>
 </resources>

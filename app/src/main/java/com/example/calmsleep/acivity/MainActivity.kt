@@ -45,15 +45,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun addViewFragment(str: String,data: MutableList<MusicData>) {
-
-        val manager = supportFragmentManager
-        val tran = manager.beginTransaction()
-        val fr = ViewAllFragment(str,data)
-        tran
-            .replace(R.id.rc, fr)
-            .commit()
-    }
+//    fun addViewFragment(str: String,data: MutableList<MusicData>) {
+//
+//        val manager = supportFragmentManager
+//        val tran = manager.beginTransaction()
+//        val fr = ViewAllFragment(str,data)
+//        tran
+//            .replace(R.id.rc, fr)
+//            .commit()
+//    }
 
     private fun addHomeFragment() {
         binding.rlOk.setBackgroundResource(R.drawable.bg_4)

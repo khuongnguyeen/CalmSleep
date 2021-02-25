@@ -1,37 +1,32 @@
 package com.example.calmsleep.fragment
 
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.view.Window
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.calmsleep.databinding.FragmentViewAllBinding
 import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.adapter.HomeAdapter
+import java.util.*
 
-class ViewAllFragment(val str: String, val data: MutableList<MusicData>) : Fragment(), HomeAdapter.IMusicOne {
+class ViewAllFragment(val str: String, val data: MutableList<MusicData>,context: Context) : Dialog(context), HomeAdapter.IMusicOne {
 
     private lateinit var binding: FragmentViewAllBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentViewAllBinding.inflate(inflater, container, false)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        binding = FragmentViewAllBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         binding.rc.layoutManager = GridLayoutManager(context, 3)
-        binding.rc.adapter = HomeAdapter(this)
+        binding.rc.adapter = HomeAdapter(this,data)
         binding.tvTitle.text = str
-        return binding.root
+
     }
 
-    override fun getCount(): Int {
-        return data.size
-    }
 
-    override fun getData(position: Int): MusicData {
-       return data[position]
-    }
+
 
     override fun onClick(position: Int) {
 
