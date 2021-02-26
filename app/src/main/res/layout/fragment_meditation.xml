@@ -13,25 +13,93 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#6e23317f"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bar"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                app:itemBackground="@color/indigo_100"
-                app:itemIconTint="@color/color_bottom"
-                app:itemTextColor="@color/color_bottom"
-                app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:menu="@menu/menu_meditation">
+                app:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
+                <ImageButton
+                    android:id="@+id/iv_picks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/full_100"
+                    android:src="@drawable/stars"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_ambient"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/iv_ambient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:background="@drawable/full_100"
+                    android:src="@drawable/female"
+                    app:layout_constraintStart_toEndOf="@+id/iv_picks"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/iv_nature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/full_100"
+                    android:src="@drawable/male"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_ambient"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_picks"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:text="@string/experts_picks"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_star"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_picks" />
+
+                <TextView
+                    android:id="@+id/iv_star"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:text="@string/ambient"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/textView4"
+                    app:layout_constraintStart_toEndOf="@+id/tv_picks"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ambient" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:text="@string/nature"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_star"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_nature" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
@@ -40,14 +108,14 @@
                 android:background="@color/indigo_100"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bottom_navigation">
+                app:layout_constraintTop_toBottomOf="@+id/bar">
 
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

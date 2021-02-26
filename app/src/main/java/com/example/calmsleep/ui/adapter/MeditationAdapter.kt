@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.calmsleep.fragment.DownloadFragment
 import com.example.calmsleep.fragment.FavouritesFragment
 import com.example.calmsleep.fragment.RecentlyFragment
+import com.example.calmsleep.fragment.ViewAllFragment
 
 class MeditationAdapter: FragmentPagerAdapter{
     constructor(fm: FragmentManager) : super(
@@ -18,7 +19,7 @@ class MeditationAdapter: FragmentPagerAdapter{
 
         return when (position) {
             0 -> {
-                RecentlyFragment()
+                ViewAllFragment()
             }
             1 -> {
                 FavouritesFragment()

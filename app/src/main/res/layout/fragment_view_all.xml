@@ -14,7 +14,10 @@
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/khuong"
+            android:alpha="0.5"
             android:layout_marginTop="200dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -22,52 +25,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.407">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Recently Player"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="223dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_title"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.115"
-                    app:srcCompat="@drawable/bg_cancel" />
-            </LinearLayout>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

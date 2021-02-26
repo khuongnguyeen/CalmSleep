@@ -18,6 +18,7 @@ class MusicViewModel : ViewModel() {
     private val musicAPI: MusicAPI = Retrofit.createRetrofit()
 
     val musicData = MutableLiveData<MutableList<MusicData>>()
+    val musicDatas = MutableLiveData<MutableList<MusicData>>()
 
 
     val isSearchingData = ObservableBoolean(true)
@@ -31,6 +32,24 @@ class MusicViewModel : ViewModel() {
             .subscribe(
                 {
                     musicData.value = it
+                    isSearchingData.set(false)
+                    Log.d("duy khuong", "----------------->>>> API <<<<-----------------")
+                },
+                {
+                    Log.e("duy khuong", "----------------->>>> API <<<<-----------------")
+                }
+            )
+    }
+
+    @SuppressLint("CheckResult")
+    fun searchSongs(songName: String?, page: Int = 1) {
+        isSearchingData.set(true)
+        musicAPI.songSearch(songName, page)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    musicDatas.value = it
                     isSearchingData.set(false)
                     Log.d("duy khuong", "----------------->>>> API <<<<-----------------")
                 },

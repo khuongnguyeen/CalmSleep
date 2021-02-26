@@ -9,21 +9,20 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.calmsleep.acivity.LoadingAcivity
+import com.example.calmsleep.R
 import com.example.calmsleep.adapter.VerticalHomeAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentHomeBinding
+import com.example.calmsleep.dialog.ViewAllDialog
 import com.example.calmsleep.fragment.ViewAllFragment
-import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.model.VerticalModel
 
 class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
 
-    //    companion object{
-//        val TAG = HomeFragment::class.java.name
-//    }
+        companion object{
+        val TAG = HomeFragment::class.java.name
+    }
     private lateinit var binding: FragmentHomeBinding
-    private var viewAllFragment: ViewAllFragment? = null
 
 
     override fun onCreateView(
@@ -35,10 +34,9 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
         register()
         binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rc.adapter = VerticalHomeAdapter(context!!, this)
-//        binding.rc.setHasFixedSize(true)
         binding.data = MyApp.getMusic()
-        for (i in MyApp.musicDataVertical){
-            Log.e("okkkkkkkk","${i.text},${i.list}")
+        for (i in MyApp.musicDataVertical) {
+            Log.e("okkkkkkkk", "${i.text},${i.list}")
         }
         return binding.root
     }
@@ -73,11 +71,10 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
     }
 
     override fun onClick(position: Int) {
-        ViewAllFragment(
-            MyApp.musicDataVertical[position].text,
-            MyApp.musicDataVertical[position].list,
-            context!!
-        ).show()
-        Toast.makeText(context, "kkkkkkkkkkko", Toast.LENGTH_SHORT).show()
+        (activity as com.example.calmsleep.acivity.MainActivity).callDialog(position)
+//                Toast.makeText(context,"$position",Toast.LENGTH_SHORT).show()
+
+
+
     }
 }

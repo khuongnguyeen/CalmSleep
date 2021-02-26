@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.calmsleep.adapter.SoundsAdapter
+import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentStoriesBinding
+import com.example.calmsleep.fragment.ViewAllFragment
 import com.example.calmsleep.ui.adapter.StoriesAdapter
 
 class StoriesFragment : Fragment(){
@@ -20,7 +22,8 @@ class StoriesFragment : Fragment(){
 
         binding.tabLayout.setupWithViewPager(binding.vp)
         binding.vp.adapter = StoriesAdapter(childFragmentManager)
-
+        ViewAllFragment.data.clear()
+        ViewAllFragment.data.addAll(MyApp.musicDataVertical[1].list)
         return binding.root
     }
 }

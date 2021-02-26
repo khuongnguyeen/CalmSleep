@@ -9,8 +9,11 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.os.IBinder
 import android.os.SystemClock
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.LoadingBinding
@@ -66,6 +69,7 @@ class LoadingAcivity : AppCompatActivity() {
         }
         async.execute()
     }
+
 
 
     private fun createConnectService() {

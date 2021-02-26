@@ -31,7 +31,9 @@ import org.jsoup.Jsoup
 class MusicService : LifecycleService(){
     val play = MusicOnlineManager()
     private val musicData = mutableListOf<MusicData>()
+    private val musicDatas = mutableListOf<MusicData>()
     fun getMusicData() = musicData
+    fun getMusicDatas() = musicDatas
 
     override fun onCreate() {
         super.onCreate()
@@ -39,7 +41,10 @@ class MusicService : LifecycleService(){
             musicData.clear()
             musicData.addAll(it)
             getData()
-
+        })
+        MyApp.getMusic().musicDatas.observe(this, Observer {
+            musicDatas.clear()
+            musicDatas.addAll(it)
         })
 
     }
@@ -108,13 +113,12 @@ class MusicService : LifecycleService(){
         }
     }
 
-    fun play(position: Int,hoPosition:Int){
-        MyApp.POSITION = position
-        createNotification(position)
-        if ( MyApp.musicDataVertical[position].list[hoPosition].linkMusic == null) {
-            getLinkMusicAsync(MyApp.musicDataVertical[position].list[hoPosition].linkSong, position)
+    fun play(position: Int,data:MutableList<MusicData>){
+        createNotification(position,data)
+        if ( data[position].linkMusic == null) {
+            getLinkMusicAsync(data[position].linkSong, position,data)
         } else {
-            play.setData(MyApp.musicDataVertical[position].list[hoPosition].linkMusic!!)
+            play.setData(data[position].linkMusic!!)
         }
     }
 
@@ -144,10 +148,10 @@ class MusicService : LifecycleService(){
         remoteViews.setOnClickPendingIntent(R.id.btn_cancel, pendingIntentCancel)
     }
 
-    fun createNotification(position: Int, isPlaying: Boolean = true) {
+    fun createNotification(position: Int,data:MutableList<MusicData>, isPlaying: Boolean = true) {
         createChannel()
         val remoteView = RemoteViews(packageName, R.layout.notification)
-        remoteView.setTextViewText(R.id.tv_name_2, musicData[position].songName)
+        remoteView.setTextViewText(R.id.tv_name_2, data[position].songName)
         remoteView.setImageViewBitmap(
             R.id.btn_play,
             BitmapFactory.decodeResource(
@@ -164,9 +168,9 @@ class MusicService : LifecycleService(){
             .setDefaults(0)
             .build()
 
-        if (musicData[position].linkImage != null) {
+        if (data[position].linkImage != null) {
             Glide.with(this).asBitmap().load(
-                musicData[position].linkImage
+                data[position].linkImage
             ).into(
                 object : CustomTarget<Bitmap>() {
                     override fun onResourceReady(
@@ -197,17 +201,17 @@ class MusicService : LifecycleService(){
         }
     }
 
-   fun getLinkMusicAsync(linkHtml: String, position: Int) {
+   fun getLinkMusicAsync(linkHtml: String, position: Int,data:MutableList<MusicData>) {
         val async = @SuppressLint("StaticFieldLeak")
         object : AsyncTask<Void, Void, String?>() {
             override fun doInBackground(vararg params: Void?): String? {
                 val link = getLinkMusic(linkHtml = linkHtml)
-                musicData[position].linkMusic = link
+                data[position].linkMusic = link
                 return link
             }
 
             override fun onPostExecute(result: String?) {
-                musicData[position].linkMusic = result
+                data[position].linkMusic = result
                 if (result != null) {
                     play.setData(result)
                 }
