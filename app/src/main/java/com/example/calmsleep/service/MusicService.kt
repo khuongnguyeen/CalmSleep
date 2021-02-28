@@ -1,5 +1,6 @@
 package com.example.calmsleep.service
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -7,6 +8,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.os.AsyncTask
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
@@ -18,7 +20,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.manager.MusicOnlineManager
-import com.example.calmsleep.model.MusicData
+import org.jsoup.Jsoup
 
 @Suppress("DEPRECATION")
 class MusicService : LifecycleService() {
@@ -49,17 +51,21 @@ class MusicService : LifecycleService() {
         }
         when (intent.action) {
             "PREVIOUS" -> {
-                if (MyApp.POSITION == 0) {
-
+                if (MyApp.POSITION == 1) {
+                    play(MyApp.getDB().getMusic().size)
                 } else {
-
+                    play(MyApp.POSITION - 1)
                 }
             }
             "PLAY" -> {
-
+                playPause(MyApp.POSITION)
             }
             "NEXT" -> {
-
+                if (MyApp.POSITION == MyApp.getDB().getMusic().size) {
+                    play(1)
+                } else {
+                    play(MyApp.POSITION + 1)
+                }
             }
             "CANCEL" -> {
                 play.stop()
@@ -72,9 +78,57 @@ class MusicService : LifecycleService() {
 
     fun play(id: Int) {
         createNotification(id)
-        play.setPath( MyApp.getDB().getMusic(id).linkMusic!!)
-
+        getLinkMusicAsyn(id)
+        MyApp.POSITION = id
+        MyApp.ISPLAYING = true
     }
+
+    fun playPause(id: Int) {
+        if (MyApp.ISPLAYING) {
+            play.pause()
+            createNotification(id,false)
+            MyApp.ISPLAYING = false
+        } else {
+            createNotification(id)
+            getLinkMusicAsyn(id)
+            MyApp.POSITION = id
+            MyApp.ISPLAYING = true
+        }
+    }
+
+    private fun getLinkMusicAsyn(id: Int) {
+        val asyn = @SuppressLint("StaticFieldLeak")
+        object : AsyncTask<Void, Void, String?>() {
+            override fun doInBackground(vararg params: Void?): String? {
+                val link = getLinkMusic(linkHtml = MyApp.getDB().getMusic(id).linkSong)
+                MyApp.getDB().getMusic(id).linkMusic = link
+                return link
+            }
+
+            override fun onPostExecute(result: String?) {
+                MyApp.getDB().getMusic(id).linkMusic = result
+                if (result != null) {
+                    play.setPath(result)
+                }
+            }
+        }
+        asyn.execute()
+    }
+
+    private fun getLinkMusic(linkHtml: String): String? {
+        val doc = Jsoup.connect(linkHtml).get()
+        val els = doc.select("div.tab-content")
+        for (e in els.first().select("ul.list-unstyled")
+            .first().select("a.download_item")) {
+            val link = e.attr("href")
+            if (link.contains(".mp3")) {
+                return link
+            }
+        }
+
+        return null
+    }
+
 
     private fun createPendingIntentMusic(remoteViews: RemoteViews) {
         val intentPrevious = Intent(this, MusicService::class.java)
@@ -125,7 +179,7 @@ class MusicService : LifecycleService() {
             .setDefaults(0)
             .build()
 
-        if ( MyApp.getDB().getMusic(id).linkImage != null) {
+        if (MyApp.getDB().getMusic(id).linkImage != null) {
             Glide.with(this).asBitmap().load(
                 MyApp.getDB().getMusic(id).linkImage
             ).into(
@@ -157,7 +211,6 @@ class MusicService : LifecycleService() {
             noti.createNotificationChannel(channel)
         }
     }
-
 
 
 }
