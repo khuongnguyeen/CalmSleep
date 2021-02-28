@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun callDialog(position:Int){
-        val v = ViewAllDialog(MyApp.musicDataVertical[position].text, MyApp.musicDataVertical[position].list)
+        val v = ViewAllDialog(MyApp.getDB().getAlbumId(position), MyApp.getDB().getMusicAlbumId(position))
         v.show(supportFragmentManager,v.tag)
     }
 

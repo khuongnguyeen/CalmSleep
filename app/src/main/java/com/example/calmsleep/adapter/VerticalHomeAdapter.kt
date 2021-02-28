@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calmsleep.acivity.LoadingAcivity
+import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ItemVetiBinding
 import com.example.calmsleep.model.MusicData
-import com.example.calmsleep.model.VerticalModel
 import com.example.calmsleep.ui.adapter.HomeAdapter
 
 class VerticalHomeAdapter(val context: Context, val inter: IMusic) :
-    RecyclerView.Adapter<VerticalHomeAdapter.VerticalHomeHolder>(), HomeAdapter.IMusicOne {
+    RecyclerView.Adapter<VerticalHomeAdapter.VerticalHomeHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalHomeHolder {
         return VerticalHomeHolder(
@@ -28,30 +27,31 @@ class VerticalHomeAdapter(val context: Context, val inter: IMusic) :
     override fun getItemCount() = inter.getCount()
 
     override fun onBindViewHolder(holder: VerticalHomeHolder, position: Int) {
+        val homeAdapter = HomeAdapter(MyApp.getDB().getMusicAlbumId(position))
+        holder.binding.tvText.text = MyApp.getDB().getAlbumId(position)
+        load(holder, homeAdapter)
+        Log.e("ok", "-----------------ok position: $position")
+    }
 
-        val homeAdapter = HomeAdapter(this, inter.getData(position).list)
+    private fun load(holder: VerticalHomeHolder, homeAdapter: HomeAdapter) {
         holder.binding.rc.setHasFixedSize(true)
-        holder.binding.data = inter.getData(position)
-        holder.binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        holder.binding.rc.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.binding.rc.adapter = homeAdapter
         holder.binding.rc.adapter!!.notifyDataSetChanged()
-        inter.getData(position).list
-        Log.e("ok", "-----------------ok position: $position")
     }
 
     interface IMusic {
         fun getCount(): Int
-        fun getData(position: Int): VerticalModel
+        fun getData(position: Int): MusicData
         fun onClick(position: Int)
     }
 
-    override fun onClick(positionChil: Int) {
-        Log.e("ok", "-----------------ok position chill: $positionChil")
-    }
 
     class VerticalHomeHolder(val binding: ItemVetiBinding, inter: IMusic) :
         RecyclerView.ViewHolder(binding.root) {
         init {
+
             binding.btnViewAll.setOnClickListener {
                 inter.onClick(adapterPosition)
             }

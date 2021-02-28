@@ -23,7 +23,7 @@ class StoriesFragment : Fragment(){
         binding.tabLayout.setupWithViewPager(binding.vp)
         binding.vp.adapter = StoriesAdapter(childFragmentManager)
         ViewAllFragment.data.clear()
-        ViewAllFragment.data.addAll(MyApp.musicDataVertical[1].list)
+        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(1))
         return binding.root
     }
 }

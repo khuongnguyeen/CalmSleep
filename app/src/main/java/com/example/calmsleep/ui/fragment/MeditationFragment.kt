@@ -23,7 +23,7 @@ class MeditationFragment : Fragment(){
         binding.tabLayout.setupWithViewPager(binding.vp)
         binding.vp.adapter = MeditationAdapter(childFragmentManager)
         ViewAllFragment.data.clear()
-        ViewAllFragment.data.addAll(MyApp.musicDataVertical[2].list)
+        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(2))
         return binding.root
     }
 }

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -70,4 +71,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation "com.airbnb.android:lottie:3.5.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0-alpha2'
+
+    implementation "androidx.room:room-runtime:2.2.6"
+    kapt  "androidx.room:room-compiler:2.2.6"
 }

@@ -4,9 +4,12 @@ import android.media.MediaPlayer
 import android.util.Log
 
 class MusicOnlineManager : MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener {
-    private var mp: MediaPlayer?=null
+    private var mp:MediaPlayer?=null
+    constructor(){
 
-    fun setData(path:String){
+    }
+
+    fun setPath(path:String){
         release()
         mp = MediaPlayer()
         mp?.setOnErrorListener(this)
@@ -25,7 +28,7 @@ class MusicOnlineManager : MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedLi
     }
 
     override fun onError(mp: MediaPlayer?, what: Int, extra: Int): Boolean {
-        Log.e("MediaManagerOnline", "onError........")
+        Log.e("MediaManagerOnline", "onError........ ")
         return true
     }
 

@@ -3,15 +3,16 @@ package com.example.calmsleep.ui.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.calmsleep.acivity.LoadingAcivity
 import com.example.calmsleep.databinding.ItemMusicBinding
 import com.example.calmsleep.model.MusicData
 
-class HomeAdapter(private val inter: IMusicOne,val list: MutableList<MusicData>) : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
+class HomeAdapter(val list: MutableList<MusicData>) : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
         return HomeHolder(
-            ItemMusicBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            inter
+            ItemMusicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -21,15 +22,13 @@ class HomeAdapter(private val inter: IMusicOne,val list: MutableList<MusicData>)
         Log.e("ok","------------- $position")
     }
 
-    interface IMusicOne {
-        fun onClick(position: Int)
-    }
 
-    class HomeHolder(val binding: ItemMusicBinding, inter: IMusicOne) :
+    class HomeHolder(val binding: ItemMusicBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                inter.onClick(adapterPosition)
+                Log.e("anhkhuongkka","--------------------- ${binding.data!!.id}")
+                LoadingAcivity.service!!.play(binding.data!!.id)
             }
         }
     }
