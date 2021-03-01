@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
 //android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen
-class ViewAllDialog(private val str: String, val data: MutableList<MusicData>) : BottomSheetDialogFragment(), DialogAdapter.IMusicOne {
+class ViewAllDialog(private val str: String, val data: MutableList<MusicData>) : BottomSheetDialogFragment() {
 
     lateinit var binding: DialogViewAllBinding
 
@@ -29,12 +29,10 @@ class ViewAllDialog(private val str: String, val data: MutableList<MusicData>) :
 
 
         binding.rc.layoutManager = GridLayoutManager(context, 2)
-        binding.rc.adapter = DialogAdapter(this,data)
+        binding.rc.adapter = DialogAdapter(data)
         binding.tvTitle.text = str
         return binding.root
     }
 
-    override fun onClick(position: Int) {
-            LoadingAcivity.service!!.play(position)
-    }
+
 }

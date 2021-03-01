@@ -26,7 +26,7 @@ class ViewAllFragment : Fragment(), ChilAdapter.IMusicOne {
     ): View? {
         binding = FragmentViewBinding.inflate(inflater, container,false)
         binding.rc.layoutManager = GridLayoutManager(context, 2)
-        binding.rc.adapter = ChilAdapter(this,data)
+        binding.rc.adapter = ChilAdapter(data)
 
         return binding.root
     }
@@ -35,7 +35,5 @@ class ViewAllFragment : Fragment(), ChilAdapter.IMusicOne {
         return data
     }
 
-    override fun onClick(position: Int) {
 
-    }
 }

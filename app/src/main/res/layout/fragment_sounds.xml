@@ -20,107 +20,122 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:weightSum="4"
+                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/iv_picks"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/full_100"
-                    android:src="@drawable/stars"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_picks"
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/experts_picks"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_picks" />
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_picks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/man_8"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/experts_picks"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/iv_ambient"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/full_100"
-                    android:src="@drawable/star"
-                    app:layout_constraintStart_toEndOf="@+id/iv_picks"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_ambient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/man_9" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ambient"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/iv_nature"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/full_100"
-                    android:src="@drawable/nature"
-                    app:layout_constraintStart_toEndOf="@+id/iv_ambient"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_nature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/man_10"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nature"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/iv_kid"
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/full_100"
-                    android:src="@drawable/kid"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_nature"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-
-                <TextView
-                    android:id="@+id/iv_star"
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/ambient"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@+id/tv_picks"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ambient" />
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_kid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/man_11" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kids"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:gravity="center"
-                    android:text="@string/nature"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@+id/iv_star"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_nature" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="16dp"
-                    android:gravity="center"
-                    android:text="@string/kids"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView4"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_kid" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@color/indigo_100"
+            <com.gigamole.navigationtabstrip.NavigationTabStrip
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bar">
-
-            </com.google.android.material.tabs.TabLayout>
+                app:layout_constraintTop_toBottomOf="@+id/bar"
+                android:id="@+id/tab_layout"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:nts_active_color="#fff"
+                app:nts_color="#E91E63"
+                app:nts_corners_radius="3.5dp"
+                app:nts_factor="0.8"
+                app:nts_titles="@array/titles"
+                app:nts_size="12sp"
+                app:nts_gravity="bottom"
+                app:nts_inactive_color="#81ffffff"
+                app:nts_type="point"
+                app:nts_typeface="fonts/moon.otf"
+                app:nts_weight="7dp"/>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp"
@@ -129,6 +144,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tab_layout">
 

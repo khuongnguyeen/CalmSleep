@@ -32,17 +32,5 @@ class SoundsAdapter: FragmentPagerAdapter{
 
     override fun getCount() = 3
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return when (position) {
-            0 -> {
-                "Recently Listened"
-            }
-            1 -> {
-                "Favourite"
-            }
-            else -> {
-                "Download"
-            }
-        }
-    }
+
 }

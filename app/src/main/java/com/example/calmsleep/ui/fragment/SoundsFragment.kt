@@ -21,8 +21,8 @@ class SoundsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSoundsBinding.inflate(inflater, container, false)
-        binding.tabLayout.setupWithViewPager(binding.vp)
         binding.vp.adapter = SoundsAdapter(childFragmentManager)
+        binding.tabLayout.setViewPager(binding.vp,0)
         ViewAllFragment.data.clear()
         ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(0))
         binding.ivPicks.setOnClickListener {
