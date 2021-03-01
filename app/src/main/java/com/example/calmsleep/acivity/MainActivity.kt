@@ -3,14 +3,17 @@ package com.example.calmsleep.acivity
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ActivityMainBinding
@@ -68,7 +71,38 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        binding.playerView.setOnClickListener {
+           val v =  MusicPlayer(1)
+            v.show(supportFragmentManager,v.tag)
+        }
 
+        sync()
+
+
+    }
+
+    fun sync() {
+        val async = @SuppressLint("StaticFieldLeak")
+        object : AsyncTask<Void, Void, Void>() {
+            override fun doInBackground(vararg params: Void?): Void? {
+                for (i in 1..2) {
+                    SystemClock.sleep(500)
+                }
+                return null
+            }
+
+            override fun onPostExecute(result: Void?) {
+
+                if (MyApp.ISPLAYING) {
+                    binding.playerView.visibility = View.VISIBLE
+                }
+                else {
+                    binding.playerView.visibility = View.GONE
+                }
+                sync()
+            }
+        }
+        async.execute()
     }
 
 

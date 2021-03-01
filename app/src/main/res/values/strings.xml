@@ -13,4 +13,17 @@
     <string name="kids">Kids</string>
     <string name="nature">Nature</string>
     <string name="ambient">Ambient</string>
+    <string name="content_skip_prev">Skip to previous track</string>
+    <string name="open_details_fragment">Open artist/folder\'s details</string>
+    <string name="content_playback_speed">Playback speed</string>
+    <string name="loved_songs_save_time">Save song position</string>
+    <string name="loved_song_add">Add to favorite songs</string>
+    <string name="precise_volume_pref_title">Precise volume control</string>
+    <string name="content_play">content_play</string>
+    <string name="queue">queue</string>
+    <string name="loved_songs">loved_songs</string>
+    <string name="content_skip_next">content_skip_next</string>
+    <string name="content_repeat">content_repeat</string>
+
+
 </resources>

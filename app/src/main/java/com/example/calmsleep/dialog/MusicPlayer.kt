@@ -8,7 +8,7 @@ import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.PlayerMusicBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MusicPlayer(id: Int) : BottomSheetDialogFragment() {
+class MusicPlayer(val idOk: Int) : BottomSheetDialogFragment() {
 
     lateinit var binding: PlayerMusicBinding
 
@@ -19,7 +19,7 @@ class MusicPlayer(id: Int) : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = PlayerMusicBinding.inflate(inflater, container, false)
-        binding.data = MyApp.getDB().getMusic(id)
+        binding.data = MyApp.getDB().getMusic(idOk)
         binding.ivIconPlay.setOnClickListener { }
         binding.ivIconFavourites.setOnClickListener { }
         binding.ivIconAlarm.setOnClickListener { }

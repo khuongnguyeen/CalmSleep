@@ -3,83 +3,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       <ImageView
-           android:id="@+id/iv_back"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:scaleType="centerCrop"
-           android:src="@drawable/bg_4"/>
-       <FrameLayout
-           android:id="@+id/content"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"/>
-       <RelativeLayout
-           android:id="@+id/rl_ok"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           tools:context=".acivity.MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-           <LinearLayout
-               android:id="@+id/ll_one"
-               android:layout_width="match_parent"
-               android:layout_height="56dp"
-               android:layoutDirection="rtl"
-               android:layout_marginTop="24dp"
-               android:layout_alignParentTop="true"
-               android:orientation="horizontal"
-               >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_4" />
 
-               <Button
-                   android:id="@+id/button_sup"
-                   android:layout_margin="4dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:text="🤗 Support Us"
-                   android:textStyle="bold"
-                   android:textSize="14sp"
-                   android:background="?actionBarItemBackground"
-                   android:textAllCaps="false"
-                   android:gravity="center_vertical"
-                   android:textColor="@color/white"
-                   />
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_marginStart="10dp"
-                   android:text="Sleep."
-                   android:layoutDirection="ltr"
-                   android:textStyle="bold"
-                   android:textSize="30sp"
-                   android:gravity="center_vertical"
-                   android:textColor="@color/white"
-                   />
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-           </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl_ok"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".acivity.MainActivity">
 
+            <LinearLayout
+                android:id="@+id/ll_one"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layoutDirection="rtl"
+                android:layout_marginTop="24dp"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal">
 
-           <me.majiajie.pagerbottomtabstrip.PageNavigationView
-               android:id="@+id/bar"
-               android:layout_width="match_parent"
-               android:layout_height="56dp"
-               android:layout_alignParentBottom="true"/>
+                <Button
+                    android:id="@+id/button_sup"
+                    android:layout_margin="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="🤗 Support Us"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:background="?actionBarItemBackground"
+                    android:textAllCaps="false"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white" />
 
-           <FrameLayout
-               android:id="@+id/rc"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_above="@+id/bar"
-               android:layout_alignParentEnd="true"
-               android:layout_marginTop="70dp"
-               android:layout_marginEnd="0dp"
-               android:layout_marginBottom="-2dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:text="Sleep."
+                    android:layoutDirection="ltr"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/windowBackground"
+                android:elevation="@dimen/search_bar_elevation"
+                android:visibility="gone"
+                android:layout_above="@+id/bar"
+                android:orientation="vertical">
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/song_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    app:indicatorColor="?attr/colorPrimary"
+                    app:trackCornerRadius="2dp"
+                    app:trackThickness="2dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:background="@color/khuong"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:id="@+id/playing_song_container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/player_controls_padding_start"
+                        android:paddingTop="@dimen/player_controls_padding_normal"
+                        android:paddingEnd="@dimen/player_controls_padding_end"
+                        android:paddingBottom="@dimen/player_controls_padding_normal">
+
+                        <TextView
+                            android:id="@+id/playing_song"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="@string/app_name"
+                            android:textAlignment="textStart"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/playing_artist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text="Yêu ai cơ"
+                            android:textAlignment="textStart"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/play_pause_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:contentDescription="@string/content_play"
+                        android:padding="8dp"
+                        android:src="@drawable/play" />
+
+                    <ImageButton
+                        android:id="@+id/queue_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:contentDescription="@string/queue"
+                        android:padding="8dp"
+                        android:src="@drawable/alarm" />
+
+                    <ImageButton
+                        android:id="@+id/loved_songs_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:contentDescription="@string/loved_songs"
+                        android:padding="8dp" />
+                </LinearLayout>
 
 
-       </RelativeLayout>
-   </RelativeLayout>
+            </LinearLayout>
+
+
+            <me.majiajie.pagerbottomtabstrip.PageNavigationView
+                android:id="@+id/bar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true" />
+
+            <FrameLayout
+                android:id="@+id/rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bar"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="70dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="-2dp" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
 
 </layout>

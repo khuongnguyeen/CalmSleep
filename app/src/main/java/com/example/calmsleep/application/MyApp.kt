@@ -14,6 +14,7 @@ class MyApp : Application() {
         fun getMusicViewModel() = musicViewModel
         var SETTING = true
         var POSITION = 0
+
         var ISPLAYING = false
         fun getDB() = database
 //        private val musicData = mutableListOf<MusicData>()
