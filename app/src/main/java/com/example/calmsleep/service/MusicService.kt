@@ -18,7 +18,10 @@ import androidx.lifecycle.LifecycleService
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
+import com.example.calmsleep.acivity.LoadingAcivity
+import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.application.MyApp
+import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.manager.MusicOnlineManager
 import org.jsoup.Jsoup
 
@@ -78,6 +81,7 @@ class MusicService : LifecycleService() {
 
     fun play(id: Int) {
         createNotification(id)
+
         getLinkMusicAsyn(id)
         MyApp.POSITION = id
         MyApp.ISPLAYING = true

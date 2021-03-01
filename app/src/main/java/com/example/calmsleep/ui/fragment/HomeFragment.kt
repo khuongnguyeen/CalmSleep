@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.adapter.VerticalHomeAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentHomeBinding
+import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.model.MusicData
 
 class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
@@ -41,6 +43,6 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
     }
 
     override fun onClick(position: Int) {
-        (activity as com.example.calmsleep.acivity.MainActivity).callDialog(position)
+        (activity as MainActivity).callDialog(position)
     }
 }

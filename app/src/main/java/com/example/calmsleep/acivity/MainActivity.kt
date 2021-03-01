@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ActivityMainBinding
+import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.dialog.ViewAllDialog
 import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.fragment.*
@@ -114,6 +115,8 @@ class MainActivity : AppCompatActivity() {
         val v = ViewAllDialog(str, data)
         v.show(supportFragmentManager, v.tag)
     }
+
+
 
     override fun onBackPressed() {}
 

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="data"
+            type="com.example.calmsleep.model.MusicData" />
+    </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/constraintLayout8"
@@ -16,6 +20,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/music_retro"
+            setImageLink="@{data.linkImage}"
             app:layout_constraintBottom_toTopOf="@+id/tv_song_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Có Chắc Chắn Không"
+            setText="@{data.songName}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/tv_artist"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +44,7 @@
             android:layout_height="wrap_content"
             android:text="Ngô Kiến Huy"
             android:textColor="@color/white"
+            setText="@{data.artistName}"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
