@@ -9,12 +9,9 @@
         motion:duration="1000">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnSwipe motion:touchAnchorId="@+id/player_view" />
-        <OnSwipe
-            motion:dragDirection="dragDown"
-            motion:touchAnchorSide="bottom" />
-        <OnSwipe />
-        <OnClick />
+        <OnSwipe motion:touchAnchorId="@+id/cl_top" />
+        <OnClick motion:targetId="@+id/cl_top" />
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

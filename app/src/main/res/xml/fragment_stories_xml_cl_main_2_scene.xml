@@ -10,7 +10,7 @@
        <KeyFrameSet>
        </KeyFrameSet>
         <OnSwipe motion:touchAnchorId="@+id/constraintLayout" />
-        <OnSwipe />
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
