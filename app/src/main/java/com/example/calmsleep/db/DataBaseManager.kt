@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.os.Environment
+import android.provider.MediaStore
 import com.example.calmsleep.model.MusicData
 import java.io.File
 import java.io.FileOutputStream
@@ -153,6 +154,7 @@ class DataBaseManager(private var context: Context) {
         val indexTAlbumId = cursor.getColumnIndex("albumid")
         val indexCategoryId = cursor.getColumnIndex("categoryid")
         val id = cursor.getInt(indexId)
+
         val songName = cursor.getString(indexSongName)
         val artistName = cursor.getString(indexArtistName)
         val linkSong = cursor.getString(indexLinkSong)
@@ -162,7 +164,6 @@ class DataBaseManager(private var context: Context) {
         val categoryid = cursor.getInt(indexCategoryId)
         cursor.close()
         closeDatabase()
-
         return MusicData(id = id, songName = songName, artistName = artistName, linkSong = linkSong, linkImage = linkImage, linkMusic = linkMusic, albumid = albumid, categoryid = categoryid
         )
     }

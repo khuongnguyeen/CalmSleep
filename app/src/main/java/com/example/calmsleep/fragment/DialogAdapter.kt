@@ -27,7 +27,9 @@ class DialogAdapter(val list: MutableList<MusicData>) : RecyclerView.Adapter<Dia
         init {
             binding.root.setOnClickListener {
                 LoadingAcivity.service!!.play(binding.data!!.id)
+
             }
         }
+
     }
 }

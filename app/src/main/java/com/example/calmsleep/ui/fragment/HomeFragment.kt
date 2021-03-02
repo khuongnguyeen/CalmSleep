@@ -11,7 +11,6 @@ import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.adapter.VerticalHomeAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentHomeBinding
-import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.model.MusicData
 
 class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {

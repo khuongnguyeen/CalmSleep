@@ -24,6 +24,12 @@
     <string name="loved_songs">loved_songs</string>
     <string name="content_skip_next">content_skip_next</string>
     <string name="content_repeat">content_repeat</string>
+    <string name="the_app_is_free_n_support_us">The App Is Free \n😍Support Us</string>
+    <string name="lunch">Lunch</string>
+    <string name="sandwich">Sandwich</string>
+    <string name="coffee">Coffee</string>
+    <string name="manage_subscription">Manage Subscription</string>
+    <string name="app_language">App Language</string>
 
 
 </resources>

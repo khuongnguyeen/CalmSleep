@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ActivityMainBinding
-import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.dialog.ViewAllDialog
 import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.fragment.*
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         sttBar()
         addHomeFragment()
         val a = binding.bar.material()
-            .addItem(R.drawable.sleep, "Home", R.color.khuong)
+            .addItem(R.drawable.sleep, "Home", R.color.pink_300)
             .addItem(R.drawable.music, "Sounds", R.color.khuong_1)
             .addItem(R.drawable.book, "Stories", R.color.khuong_2)
             .addItem(R.drawable.meditation, "Meditation", R.color.khuong_3)
@@ -70,16 +69,35 @@ class MainActivity : AppCompatActivity() {
                 Log.e("asd", "onRepeat selected: $index")
             }
         })
-
-        binding.playerView.setOnClickListener {
-           val v =  MusicPlayer(1)
-            v.show(supportFragmentManager,v.tag)
-        }
-
         sync()
+        binding.playerView.playPauseButton.setOnClickListener {
+            LoadingAcivity.service!!.playPause(MyApp.POSITION)
+        }
+        binding.playerView.ivIconPlay.setOnClickListener {
+            LoadingAcivity.service!!.playPause(MyApp.POSITION)
+        }
+        binding.playerView.queueButton.setOnClickListener {
+            binding.rlGone.visibility = View.GONE
+        }
 
 
     }
+
+    fun updateData() {
+        for (a in MyApp.getMD()) {
+            if (a.id == MyApp.POSITION){
+                binding.playerView.playingSong.text = a.songName
+                binding.playerView.playingArtist.text = a.artistName
+                binding.playerView.tvSongName.text = a.songName
+                binding.playerView.tvArtist.text = a.artistName
+                Glide.with(applicationContext)
+                    .load(a.linkImage)
+                    .into(binding.playerView.ivMusicImg)
+            }
+
+        }
+    }
+
 
     fun sync() {
         val async = @SuppressLint("StaticFieldLeak")
@@ -94,10 +112,15 @@ class MainActivity : AppCompatActivity() {
             override fun onPostExecute(result: Void?) {
 
                 if (MyApp.ISPLAYING) {
-                    binding.playerView.visibility = View.VISIBLE
-                }
-                else {
-                    binding.playerView.visibility = View.GONE
+                    binding.rlGone.visibility = View.VISIBLE
+                    binding.playerView.queueButton.visibility = View.GONE
+                    binding.playerView.playPauseButton.setImageResource(R.drawable.pause)
+                    binding.playerView.ivIconPlay.setImageResource(R.drawable.pause_beau)
+                    updateData()
+                } else {
+                    binding.playerView.queueButton.visibility = View.VISIBLE
+                    binding.playerView.playPauseButton.setImageResource(R.drawable.play)
+                    binding.playerView.ivIconPlay.setImageResource(R.drawable.play_beau)
                 }
                 sync()
             }
@@ -128,7 +151,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addHomeFragment() {
-        binding.ivBack.setImageResource(R.drawable.bg_4)
+        binding.ivBack.setImageResource(R.drawable.bg_8)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = HomeFragment()
@@ -151,11 +174,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onBackPressed() {}
 
     private fun addSoundsFragment() {
-        binding.ivBack.setImageResource(R.drawable.bg_2)
+        binding.ivBack.setImageResource(R.drawable.bg_7)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = SoundsFragment()
@@ -166,7 +188,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addStoriesFragment() {
 
-        binding.ivBack.setImageResource(R.drawable.bg_3)
+        binding.ivBack.setImageResource(R.drawable.bg_9)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = StoriesFragment()
@@ -188,7 +210,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addAlarmFragment() {
 
-        binding.ivBack.setImageResource(R.drawable.bg_6)
+        binding.ivBack.setImageResource(R.color.khuong_3)
         val manager = supportFragmentManager
         val tran = manager.beginTransaction()
         val fr = AlarmFragment()

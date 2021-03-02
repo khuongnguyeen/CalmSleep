@@ -14,11 +14,10 @@ class MyApp : Application() {
         fun getMusicViewModel() = musicViewModel
         var SETTING = true
         var POSITION = 0
-
+        private val musicDataBase = mutableListOf<MusicData>()
         var ISPLAYING = false
         fun getDB() = database
-//        private val musicData = mutableListOf<MusicData>()
-//        fun getMusicData() = musicData
+        fun getMD() = musicDataBase
     }
 
 

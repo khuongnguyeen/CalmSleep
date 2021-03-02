@@ -26,8 +26,6 @@ class ViewAllDialog(private val str: String, val data: MutableList<MusicData>) :
         savedInstanceState: Bundle?
     ): View? {
         binding = DialogViewAllBinding.inflate(inflater, container,false)
-
-
         binding.rc.layoutManager = GridLayoutManager(context, 2)
         binding.rc.adapter = DialogAdapter(data)
         binding.tvTitle.text = str

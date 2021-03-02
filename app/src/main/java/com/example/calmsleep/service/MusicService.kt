@@ -18,10 +18,7 @@ import androidx.lifecycle.LifecycleService
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
-import com.example.calmsleep.acivity.LoadingAcivity
-import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.application.MyApp
-import com.example.calmsleep.dialog.MusicPlayer
 import com.example.calmsleep.manager.MusicOnlineManager
 import org.jsoup.Jsoup
 
@@ -30,14 +27,20 @@ class MusicService : LifecycleService() {
     private val play = MusicOnlineManager()
     override fun onCreate() {
         super.onCreate()
-    }
 
+
+    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-        if (intent != null) {
-            action(intent)
+        if (intent!!.getIntExtra("setting", 0) == 1){
+            createNotification(1)
+        }else{
+            MyApp.getMD().clear()
+            MyApp.getMD().addAll(MyApp.getDB().getMusic())
         }
+
+        action(intent)
         return START_NOT_STICKY
     }
 

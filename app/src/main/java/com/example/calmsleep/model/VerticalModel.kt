@@ -9,5 +9,6 @@ data class MusicData(
     var linkImage: String? = null,
     var linkMusic: String? = null,
     var categoryid: Int? = null,
+    val duration: Long? = null,
     var albumid: Int? = null
 )
