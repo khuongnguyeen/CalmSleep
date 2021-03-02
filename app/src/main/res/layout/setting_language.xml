@@ -5,7 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_clock"
+        android:background="@color/color_white"
         android:minWidth="300dp"
         android:orientation="vertical">
 
@@ -32,7 +32,7 @@
                 android:fontFamily="@font/gilroy_regular"
                 android:gravity="center_vertical"
                 android:text="@string/app_language"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_blue"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 
@@ -100,7 +100,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_blue"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 

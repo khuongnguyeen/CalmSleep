@@ -2,6 +2,7 @@ package com.example.calmsleep.acivity
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Build
@@ -11,17 +12,21 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ActivityMainBinding
+import com.example.calmsleep.dialog.ExitDialog
 import com.example.calmsleep.dialog.ViewAllDialog
 import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.fragment.*
 import me.majiajie.pagerbottomtabstrip.MaterialMode
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
+import kotlin.system.exitProcess
 
 
 @Suppress("DEPRECATION")
@@ -35,11 +40,11 @@ class MainActivity : AppCompatActivity() {
         sttBar()
         addHomeFragment()
         val a = binding.bar.material()
-            .addItem(R.drawable.sleep, "Home", R.color.pink_300)
-            .addItem(R.drawable.music, "Sounds", R.color.khuong_1)
-            .addItem(R.drawable.book, "Stories", R.color.khuong_2)
-            .addItem(R.drawable.meditation, "Meditation", R.color.khuong_3)
-            .addItem(R.drawable.alarm, "Alarm", R.color.khuong_4)
+            .addItem(R.drawable.sleep, "Home")
+            .addItem(R.drawable.music, "Sounds")
+            .addItem(R.drawable.book, "Stories")
+            .addItem(R.drawable.meditation, "Meditation")
+            .addItem(R.drawable.alarm, "Alarm")
             .setDefaultColor(-0x76000001)
             .setMode(MaterialMode.CHANGE_BACKGROUND_COLOR)
             .build()
@@ -160,6 +165,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+
+
     fun callDialog(position: Int) {
         val v = ViewAllDialog(
             MyApp.getDB().getAlbumId(position),
@@ -174,7 +181,21 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {
+        val alertDialogBuilder : AlertDialog.Builder= AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle(R.string.do_you_really_want_to_exit)
+        alertDialogBuilder
+            .setCancelable(false)
+            .setPositiveButton("NO") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("YES") { _, _ ->
+                finishAffinity()
+                exitProcess(0)
+            }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
 
     private fun addSoundsFragment() {
         binding.ivBack.setImageResource(R.drawable.bg_7)

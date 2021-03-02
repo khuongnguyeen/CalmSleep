@@ -5,7 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_clock"
+        android:background="@color/color_white"
         android:minWidth="300dp"
         android:orientation="vertical">
 
@@ -32,7 +32,7 @@
                 android:fontFamily="@font/gilroy_regular"
                 android:gravity="center_vertical"
                 android:text="@string/the_app_is_free_n_support_us"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_blue"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 
@@ -99,7 +99,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_blue"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 
@@ -149,7 +149,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_blue"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:text="@string/manage_subscription"
             android:layout_marginBottom="25dp"
-            android:textColor="#00a645"
+            android:textColor="@color/color_black"
             android:textStyle="bold"
             android:gravity="center"
 

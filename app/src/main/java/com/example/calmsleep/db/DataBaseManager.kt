@@ -44,6 +44,19 @@ class DataBaseManager(private var context: Context) {
         out.close()
     }
 
+    fun createFavourites() {
+        val sql = "CREATE TABLE IF NOT EXISTS favourites ( " +
+                "id INTEGER NOT NULL UNIQUE, " +
+                "music_id INTEGER  NOT NULL, " +
+                "album_id INTEGER  NOT NULL, " +
+                "category_id INTEGER  NOT NULL, " +
+                "PRIMARY KEY(id AUTOINCREMENT) " +
+                ")"
+        openDatabase()
+        database?.execSQL(sql)
+        closeDatabase()
+    }
+
     fun getAlbumId(id: Int): String {
         openDatabase()
         val sql = "SELECT * FROM album WHERE id = ${id + 1}"

@@ -24,6 +24,8 @@
     <color name="bg_color">#1B000000</color>
     <color name="color_clock">#05d9c6</color>
     <color name="color_blue">#00a645</color>
+    <color name="color_white">#E0E0E0</color>
+    <color name="color_black">#212121</color>
 
 
 

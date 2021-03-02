@@ -63,7 +63,7 @@
             <me.majiajie.pagerbottomtabstrip.PageNavigationView
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="48dp"
                 android:layout_alignParentBottom="true" />
 
             <FrameLayout

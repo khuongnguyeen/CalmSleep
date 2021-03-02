@@ -29,7 +29,19 @@
     <string name="sandwich">Sandwich</string>
     <string name="coffee">Coffee</string>
     <string name="manage_subscription">Manage Subscription</string>
+    <string name="you_not_have_any_sleep_sound_downloaded_as_yet">You not have any sleep sound downloaded as yet</string>
+    <string name="favourites_is_empty">Favourites is Empty</string>
+    <string name="auto_download_favourites">Auto Download Favourites</string>
+    <string name="pay_developers_a_tip">Pay developers a tip</string>
     <string name="app_language">App Language</string>
+    <string name="rate_us_on_playstore">Rate us on Playstore</string>
+    <string name="notification_and_popups">Notification and popups</string>
+    <string name="bedtime_reminder_popup">Bedtime Reminder Popup</string>
+    <string name="save_bedtime">SAVE BEDTIME</string>
+    <string name="repeat">Repeat</string>
+    <string name="do_you_really_want_to_exit">Do you really want to exit ???</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
 
 
 </resources>

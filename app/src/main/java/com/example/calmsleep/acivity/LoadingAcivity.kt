@@ -74,7 +74,8 @@ class LoadingAcivity : AppCompatActivity() {
         applicationContext!!.unbindService(conn!!)
     }
 
-
+    override fun onBackPressed() {
+    }
 
 
 

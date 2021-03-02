@@ -9,7 +9,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/color_clock"
+            android:background="@color/color_black"
             android:layoutDirection="rtl"
             android:orientation="horizontal">
 
@@ -40,6 +40,8 @@
             android:id="@+id/time_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:headerBackground="@color/color_black"
+            android:numbersSelectorColor="@color/color_black"
             />
 
         <TextView
@@ -50,7 +52,7 @@
             android:fontFamily="@font/gilroy_regular"
             android:gravity="center_vertical"
             android:text="Repeat"
-            android:textColor="@color/color_clock"
+            android:textColor="@color/color_black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -70,7 +72,7 @@
                     android:text="S"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -94,7 +96,7 @@
                     android:text="M"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -117,7 +119,7 @@
                     android:text="T"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -140,7 +142,7 @@
                     android:text="W"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -163,7 +165,7 @@
                     android:text="T"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -186,7 +188,7 @@
                     android:text="F"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -209,7 +211,7 @@
                     android:text="S"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/color_clock"
+                    android:textColor="@color/color_black"
                     android:textStyle="bold"
                     />
                 <CheckBox
@@ -229,7 +231,7 @@
             android:id="@+id/btn_done"
             android:layout_width="200dp"
             android:layout_height="56dp"
-            android:background="@color/color_clock"
+            android:background="@color/color_black"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="@font/barlow_medium"

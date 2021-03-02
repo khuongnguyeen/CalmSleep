@@ -5,7 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_clock"
+        android:background="@color/color_white"
         android:minWidth="300dp"
         android:orientation="vertical">
         <LinearLayout
@@ -28,8 +28,8 @@
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/gilroy_regular"
                 android:gravity="center_vertical"
-                android:text="Notification and popups"
-                android:textColor="@color/white"
+                android:text="@string/notification_and_popups"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00a645"
+                android:background="@color/color_black"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal">
 
@@ -79,7 +79,7 @@
                         android:layout_marginStart="15dp"
                         android:fontFamily="@font/gilroy_regular"
                         android:gravity="center_vertical"
-                        android:text="Bedtime Reminder Popup"
+                        android:text="@string/bedtime_reminder_popup"
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />
