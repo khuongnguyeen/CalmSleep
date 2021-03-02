@@ -22,7 +22,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/bar"
                 android:weightSum="3"
@@ -38,15 +38,17 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_picks"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:src="@drawable/man_1"/>
+                        android:src="@drawable/man_1"
+                        tools:ignore="NestedWeights" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/experts_picks"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
                 </LinearLayout>
 
 
@@ -59,15 +61,17 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_female"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:src="@drawable/man_2"/>
+                        android:src="@drawable/man_2"
+                        tools:ignore="NestedWeights" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/females_narration"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,15 +83,17 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_male"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:src="@drawable/man_3" />
+                        android:src="@drawable/man_3"
+                        tools:ignore="NestedWeights" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/male_narration"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
                 </LinearLayout>
             </LinearLayout>
 

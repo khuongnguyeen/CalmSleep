@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
         return binding.root
     }
 
-    override fun getCount() = 6
+    override fun getCount() = 5
 
     override fun getData(position: Int): MusicData {
         return MyApp.getDB().getMusic()[position]
