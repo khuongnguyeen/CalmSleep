@@ -2,7 +2,6 @@ package com.example.calmsleep.acivity
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.DialogInterface
 import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Build
@@ -12,7 +11,6 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,7 +18,6 @@ import com.bumptech.glide.Glide
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.ActivityMainBinding
-import com.example.calmsleep.dialog.ExitDialog
 import com.example.calmsleep.dialog.ViewAllDialog
 import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.fragment.*
