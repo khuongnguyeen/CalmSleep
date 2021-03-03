@@ -1,17 +1,21 @@
 package com.example.calmsleep.service
 
 import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
+import android.provider.MediaStore
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
@@ -20,24 +24,29 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.example.calmsleep.R
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.manager.MusicOnlineManager
+import com.example.calmsleep.model.MusicOnlineMp3
 import org.jsoup.Jsoup
 
 @Suppress("DEPRECATION")
 class MusicService : LifecycleService() {
-    private val play = MusicOnlineManager()
+    val play = MusicOnlineManager()
     override fun onCreate() {
         super.onCreate()
-
-
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-        if (intent!!.getIntExtra("setting", 0) == 1){
-            createNotification(1)
-        }else{
+        if (intent!!.getIntExtra("setting", 0) == 1) {
+            createNotification("Have a wonderful day ahead, you :)")
+
+        } else if (intent.getIntExtra("setting", 0) == 2) {
+            createNotification("Sleep now. Boost Productivity Tomorrow :)")
+
+        } else {
             MyApp.getMD().clear()
             MyApp.getMD().addAll(MyApp.getDB().getMusic())
+            MyApp.getFavourites().clear()
+            MyApp.getFavourites().addAll(MyApp.getDB().getFavourites())
         }
 
         action(intent)
@@ -50,6 +59,7 @@ class MusicService : LifecycleService() {
         super.onBind(intent)
         return MyBinder(this)
     }
+
 
     private fun action(intent: Intent) {
         if (intent.action == null) {
@@ -93,7 +103,7 @@ class MusicService : LifecycleService() {
     fun playPause(id: Int) {
         if (MyApp.ISPLAYING) {
             play.pause()
-            createNotification(id,false)
+            createNotification(id, false)
             MyApp.ISPLAYING = false
         } else {
             createNotification(id)
@@ -136,6 +146,22 @@ class MusicService : LifecycleService() {
         return null
     }
 
+    private fun createNotification(s: String) {
+        createChannel2()
+        val no = NotificationCompat.Builder(this, "no") as NotificationCompat.Builder
+        no.setSmallIcon(R.drawable.baseline_play_circle_white_24dp)
+            .setContentTitle("Calm Sleep")
+            .setContentText(s)
+            .setOngoing(false)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setDefaults(Notification.DEFAULT_ALL)
+            .setAutoCancel(true)
+            .build()
+        val mNotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        mNotificationManager.notify(2, no.build())
+//        startForeground(2, no)
+    }
 
     private fun createPendingIntentMusic(remoteViews: RemoteViews) {
         val intentPrevious = Intent(this, MusicService::class.java)
@@ -219,5 +245,16 @@ class MusicService : LifecycleService() {
         }
     }
 
+
+    private fun createChannel2() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val import = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("no", "Nguyễn Duy Khương", import)
+            channel.setSound(null, null)
+            channel.description = "no"
+            val noti = getSystemService(NotificationManager::class.java)
+            noti.createNotificationChannel(channel)
+        }
+    }
 
 }

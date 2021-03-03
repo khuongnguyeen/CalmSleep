@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_black"
+        android:minWidth="300dp">
+        <TextView
+            android:id="@+id/tv_momo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NGUYEN DUY KHUONG"
+            android:textColor="@color/color_white"
+            android:gravity="center"
+            android:fontFamily="@font/ko2"
+            android:textSize="35sp"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:layout_below="@+id/tv_momo"
+            android:id="@+id/tv_sdt_momo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0343318686"
+            android:textColor="@color/color_white"
+            android:gravity="center"
+            android:fontFamily="@font/ko2"
+            android:textSize="35sp"
+            android:layout_marginTop="20dp"
+            />
+
+        <ImageView
+            android:layout_below="@+id/tv_sdt_momo"
+            android:id="@+id/iv_momo"
+            android:layout_marginTop="50dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/momo"
+            android:layout_marginBottom="50dp"
+            android:layout_centerInParent="true"
+            />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+</layout>

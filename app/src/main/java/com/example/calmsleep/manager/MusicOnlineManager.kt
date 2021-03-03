@@ -13,6 +13,11 @@ class MusicOnlineManager : MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedLi
         mp?.setDataSource(path)
         prepareAsyn()
 
+
+    }
+
+    fun setLooping(isKhuong:Boolean){
+        mp?.isLooping = isKhuong
     }
 
     fun release(){

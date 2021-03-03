@@ -1,6 +1,5 @@
 package com.example.calmsleep.acivity
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ComponentName
 import android.content.Context
@@ -8,16 +7,13 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.graphics.Color
 import android.os.*
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.calmsleep.R
-import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.LoadingBinding
-import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.service.MusicService
 import org.jsoup.Jsoup
 
@@ -38,7 +34,7 @@ class LoadingAcivity : AppCompatActivity() {
         Handler().postDelayed({
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivities(arrayOf(intent))
-        },4000)
+        },1790)
 
     }
 

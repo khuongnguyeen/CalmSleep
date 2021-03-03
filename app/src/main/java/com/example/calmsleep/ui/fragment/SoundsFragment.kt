@@ -10,7 +10,9 @@ import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.adapter.SoundsAdapter
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentSoundsBinding
+import com.example.calmsleep.fragment.FavouritesFragment
 import com.example.calmsleep.fragment.ViewAllFragment
+import com.example.calmsleep.model.MusicData
 
 class SoundsFragment : Fragment() {
     private lateinit var binding: FragmentSoundsBinding
@@ -24,9 +26,22 @@ class SoundsFragment : Fragment() {
         binding.vp.adapter = SoundsAdapter(childFragmentManager)
         binding.tabLayout.setViewPager(binding.vp,0)
         ViewAllFragment.data.clear()
-        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(0))
+        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(1))
+        FavouritesFragment.data.clear()
+        val data = mutableListOf<MusicData>()
+        for (i in MyApp.getMD()){
+            for (j in MyApp.getFavourites()){
+                if ( i.id == j.musicId){
+                    if (i.albumid == 1){
+                        data.add(i)
+                    }
+                }
+            }
+
+        }
+        FavouritesFragment.data.addAll(data)
         binding.ivPicks.setOnClickListener {
-            (activity as MainActivity).callDialogChill("Experts Picks",MyApp.getDB().getMusicCategoryId(0))
+            (activity as MainActivity).callDialogChill("Experts Picks",MyApp.getDB().getMusicCategoryId(4))
         }
         binding.ivAmbient.setOnClickListener {
             (activity as MainActivity).callDialogChill("Experts Picks",MyApp.getDB().getMusicCategoryId(1))

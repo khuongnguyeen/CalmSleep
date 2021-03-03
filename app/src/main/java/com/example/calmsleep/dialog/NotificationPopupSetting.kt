@@ -19,6 +19,9 @@ class NotificationPopupSetting : BottomSheetDialogFragment()  {
         binding = SettingNotifitionPopupBinding.inflate(inflater, container,false)
 
 
+        binding.ivClose.setOnClickListener {
+            dismiss()
+        }
 
         return binding.root
     }

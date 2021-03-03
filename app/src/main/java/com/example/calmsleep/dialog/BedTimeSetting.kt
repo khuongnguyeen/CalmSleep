@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.calmsleep.broadcast.BroadcastCheck
 import com.example.calmsleep.databinding.SettingAlarmBinding
 import com.example.calmsleep.databinding.SettingBedTimeBinding
@@ -29,22 +30,31 @@ class BedTimeSetting: BottomSheetDialogFragment()  {
         val calendar = Calendar.getInstance()
         val alarmManager =   context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, BroadcastCheck::class.java)
-        var setting = 1
-
+        intent.putExtra("alarm",2)
+        val setting = 1
         binding.timePicker.setIs24HourView(true)
-
         binding.btnDone.setOnClickListener {
             calendar.set(Calendar.HOUR_OF_DAY, binding.timePicker.currentHour)
             calendar.set(Calendar.MINUTE, binding.timePicker.currentMinute)
-
             val gio = binding.timePicker.currentHour
             val phut = binding.timePicker.currentMinute
-
             val pendingIntent =
                 PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
             dismiss()
             setDataLocal(setting,gio,phut)
+            Toast.makeText(context,"Thời gian ngủ:  $gio:$phut", Toast.LENGTH_SHORT).show()
+            var s =""
+            if (phut < 10){
+                s = "$gio:0$phut"
+            }else{
+                s ="$gio:$phut"
+            }
+            binding.tvTimeSet.text = s
+        }
+
+        binding.ivClose.setOnClickListener {
+            dismiss()
         }
 
         return binding.root

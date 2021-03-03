@@ -30,7 +30,7 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
         binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rc.adapter = VerticalHomeAdapter(context!!, this)
         for (i in MyApp.getDB().getMusic()) {
-            Log.e("okkkkkkkk", "${i.albumid},${i.categoryid}")
+            Log.e("okkkkkkkk", "${i.albumid},${i.categoryId}")
         }
         return binding.root
     }
@@ -42,6 +42,6 @@ class HomeFragment : Fragment(), VerticalHomeAdapter.IMusic {
     }
 
     override fun onClick(position: Int) {
-        (activity as MainActivity).callDialog(position)
+        (activity as MainActivity).callDialog(position+1)
     }
 }

@@ -19,6 +19,20 @@ class PayDevSetting : BottomSheetDialogFragment()  {
         binding = SettingPayDeveloperBinding.inflate(inflater, container,false)
 
 
+        binding.ivClose.setOnClickListener {
+            dismiss()
+        }
+        val b = SupportDialog()
+        binding.cvLunch.setOnClickListener {
+            b.show(childFragmentManager,b.tag)
+        }
+        binding.cvSand.setOnClickListener {
+            b.show(childFragmentManager,b.tag)
+        }
+        binding.cvCoffee.setOnClickListener {
+            b.show(childFragmentManager,b.tag)
+        }
+
 
         return binding.root
     }

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import com.example.calmsleep.acivity.MainActivity
 import com.example.calmsleep.application.MyApp
 import com.example.calmsleep.databinding.FragmentStoriesBinding
+import com.example.calmsleep.fragment.FavouritesFragment
 import com.example.calmsleep.fragment.ViewAllFragment
+import com.example.calmsleep.model.MusicData
 import com.example.calmsleep.ui.adapter.StoriesAdapter
 
 class StoriesFragment : Fragment() {
@@ -24,7 +26,20 @@ class StoriesFragment : Fragment() {
         binding.tabLayout.setViewPager(binding.vp, 0)
 
         ViewAllFragment.data.clear()
-        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(1))
+        ViewAllFragment.data.addAll(MyApp.getDB().getMusicAlbumId(2))
+        FavouritesFragment.data.clear()
+        val data = mutableListOf<MusicData>()
+        for (i in MyApp.getMD()){
+            for (j in MyApp.getFavourites()){
+                if ( i.id == j.musicId){
+                    if (i.albumid == 2){
+                        data.add(i)
+                    }
+                }
+            }
+
+        }
+        FavouritesFragment.data.addAll(data)
 
         binding.ivPicks.setOnClickListener {
             (activity as MainActivity).callDialogChill("Experts Picks",MyApp.getDB().getMusicAlbumId(2))

@@ -116,7 +116,7 @@
             app:srcCompat="@drawable/alarm" />
 
         <ImageView
-            android:id="@+id/iv_icon_speak"
+            android:id="@+id/iv_icon_download"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="35dp"

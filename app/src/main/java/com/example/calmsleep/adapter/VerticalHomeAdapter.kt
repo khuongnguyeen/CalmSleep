@@ -27,8 +27,8 @@ class VerticalHomeAdapter(val context: Context, val inter: IMusic) :
     override fun getItemCount() = inter.getCount()
 
     override fun onBindViewHolder(holder: VerticalHomeHolder, position: Int) {
-        val homeAdapter = HomeAdapter(MyApp.getDB().getMusicAlbumId(position))
-        holder.binding.tvText.text = MyApp.getDB().getAlbumId(position)
+        val homeAdapter = HomeAdapter(MyApp.getDB().getMusicAlbumId(position+1))
+        holder.binding.tvText.text = MyApp.getDB().getAlbumId(position+1)
         load(holder, homeAdapter)
         Log.e("ok", "-----------------ok position: $position")
     }

@@ -8,9 +8,17 @@ import com.example.calmsleep.service.MusicService
 open class BroadcastCheck : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val intent = Intent(context, MusicService::class.java)
-        intent.putExtra("setting",1)
-        context.startService(intent)
+        if (intent.getIntExtra("alarm", 0) == 1) {
+            val intent = Intent(context, MusicService::class.java)
+            intent.putExtra("setting",1)
+            context.startService(intent)
+        }
+        if (intent.getIntExtra("alarm", 0) == 2) {
+            val intent = Intent(context, MusicService::class.java)
+            intent.putExtra("setting",2)
+            context.startService(intent)
+        }
+
     }
 
 }
